@@ -10,6 +10,11 @@ namespace Assets.Enemy
 
         private void Update()
         {
+            MoveTowardsTarget();
+        }
+
+        private void MoveTowardsTarget()
+        {
             var targetLocation = Target.transform.position;
             var origin = gameObject.transform.position;
 
