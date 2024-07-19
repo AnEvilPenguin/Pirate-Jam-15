@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Enemy
 {
@@ -7,6 +8,8 @@ namespace Assets.Enemy
         public Rigidbody2D Rigidbody;
         public float Speed = 1.0f;
         public GameObject Target;
+
+        [SerializeField] private List<AudioClip> Growls;
 
         private void Update()
         {
@@ -17,7 +20,9 @@ namespace Assets.Enemy
 
             MoveTowardsTarget(direction);
 
-            var direction = targetLocation - origin;
+            if (direction.magnitude < 5f)
+                SoundEffectsManager.instance.PlayRandomSoundEffect(Growls, transform, 1f);
+        }
 
         private void MoveTowardsTarget(Vector3 direction) =>
             Rigidbody.velocity = direction.normalized * Speed;
