@@ -7,6 +7,7 @@ namespace Assets.Enemy
     {
         public float GrowlBackOff = 5f;
         public Rigidbody2D Rigidbody;
+        public bool Silent = false;
         public float Speed = 1.0f;
         public GameObject Target;
 
@@ -22,7 +23,7 @@ namespace Assets.Enemy
 
             MoveTowardsTarget(direction);
 
-            if (direction.magnitude < 5f)
+            if (direction.magnitude < 5f && !Silent)
                 Growl();
             // TODO consider different effects when in really close.
         }
