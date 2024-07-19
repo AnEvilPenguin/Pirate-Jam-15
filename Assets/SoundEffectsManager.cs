@@ -14,7 +14,7 @@ public class SoundEffectsManager : MonoBehaviour
             instance = this;
     }
 
-    public void PlaySoundEffect(AudioClip audioClip, Transform spawnTransform, float volume)
+    public float PlaySoundEffect(AudioClip audioClip, Transform spawnTransform, float volume)
     {
         AudioSource audioSource = Instantiate(soundEffectObject, spawnTransform.position, Quaternion.identity);
 
@@ -27,12 +27,14 @@ public class SoundEffectsManager : MonoBehaviour
         float clipLength = audioSource.clip.length;
 
         Destroy(audioSource.gameObject, clipLength);
+
+        return clipLength;
     }
 
-    public void PlayRandomSoundEffect (List<AudioClip> audioClips, Transform spawnTransform, float volume)
+    public float PlayRandomSoundEffect (List<AudioClip> audioClips, Transform spawnTransform, float volume)
     {
         var rand = Random.Range(0, audioClips.Count);
 
-        PlaySoundEffect(audioClips[rand], spawnTransform, volume);
+        return PlaySoundEffect(audioClips[rand], spawnTransform, volume);
     }
 }
