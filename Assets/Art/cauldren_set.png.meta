@@ -43,9 +43,9 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -95,7 +95,511 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: cauldren_set_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d58ef1158e5e674fa584d2074d73078
+      internalID: -767023939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_1
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 144
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b20ab9526c2031749b2c7c21d2cc98d9
+      internalID: 156248913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_2
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 144
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 162dcf74d04ae4e4ead19498ca4cfb86
+      internalID: -690852518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_3
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 144
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66598ab3afeb65647a83006581ad4ecf
+      internalID: 663799967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_4
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 144
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1af43a5aeec7d742a9bdc57870af7c5
+      internalID: -1630750204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_5
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 144
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c8a7eda9d6aa454b95f80c947df7544
+      internalID: -1545246407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b364263016ab424f996d639566e15ec
+      internalID: 1793420822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_7
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 96
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76a9c38e1abf5ca47b9c1e7052e10c13
+      internalID: -744852476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_8
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 96
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9245f9d9c26001d48a19ec5e1b48356d
+      internalID: -782865960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_9
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 96
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfee8e0495dcac547afdd083e702d1de
+      internalID: 547777157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_10
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 96
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbd649cca6d739646874963410192431
+      internalID: -1516017370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_11
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 96
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3038fa6a0ac85d4aa183f36a2c359fe
+      internalID: -311644236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bbe2d6742e936c44972c64e9a7c9e87
+      internalID: 1774071889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_13
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 48
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e154cb5134d4884db22b9b5cef6e795
+      internalID: 1834637888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_14
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 48
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8b13c84827560540b36203cd82b08f4
+      internalID: 1281041090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_15
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 48
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a6556840f86c82499943c34cf9ba9a1
+      internalID: 1634763529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_16
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 48
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eb257170bdd2744092d33569a57dcc3
+      internalID: 1276872361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_17
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 48
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 093888b36cdc5874782afb568b4360ab
+      internalID: 1786610557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b12738e9a2dcf445954a0babd7e9612
+      internalID: 1735450956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_19
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 0
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6347d2b0f7456c34894449dfba01f5af
+      internalID: -721889030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_20
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 0
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04a19395c94eef44992aa11c4cd40095
+      internalID: 645948789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_21
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 0
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b86f095fc46d45844b0e5ab1ade5e189
+      internalID: -1484347667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_22
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 0
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7f823a365b959b42a7917d032cbfa96
+      internalID: 588586781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cauldren_set_23
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 0
+        width: 47.666668
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d98e49f29a955040903d9c7c10cdff4
+      internalID: 1025470999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +610,31 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cauldren_set_0: -767023939
+      cauldren_set_1: 156248913
+      cauldren_set_10: -1516017370
+      cauldren_set_11: -311644236
+      cauldren_set_12: 1774071889
+      cauldren_set_13: 1834637888
+      cauldren_set_14: 1281041090
+      cauldren_set_15: 1634763529
+      cauldren_set_16: 1276872361
+      cauldren_set_17: 1786610557
+      cauldren_set_18: 1735450956
+      cauldren_set_19: -721889030
+      cauldren_set_2: -690852518
+      cauldren_set_20: 645948789
+      cauldren_set_21: -1484347667
+      cauldren_set_22: 588586781
+      cauldren_set_23: 1025470999
+      cauldren_set_3: 663799967
+      cauldren_set_4: -1630750204
+      cauldren_set_5: -1545246407
+      cauldren_set_6: 1793420822
+      cauldren_set_7: -744852476
+      cauldren_set_8: -782865960
+      cauldren_set_9: 547777157
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
