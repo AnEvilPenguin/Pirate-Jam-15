@@ -45,7 +45,11 @@ namespace Assets.Player
 
         List<MovementKeys> currentlyPressedMovementKeys = new List<MovementKeys>();
         int frameRate = 12;
+        float movementSpeed = 1.5f;
         float idleTime;
+
+        Vector2 movementDirectionVector;
+        
 
         private void Update()
         {
@@ -60,8 +64,35 @@ namespace Assets.Player
                 PlayIdleAnimation();
         }
 
+        void FixedUpdate()
+        {
+            if (player.playerState != PlayerState.Moving)
+            {
+                player.playerRigidbody.velocity = Vector2.zero;
+                return;
+            }
+
+            movementDirectionVector = movementDirection switch
+            {
+                PlayerDirection.North => new Vector2(0, 1),
+                PlayerDirection.NorthEast => new Vector2(1, 1),
+                PlayerDirection.East => new Vector2(1, 0),
+                PlayerDirection.SouthEast => new Vector2(1, -1),
+                PlayerDirection.South => new Vector2(0, -1),
+                PlayerDirection.SouthWest => new Vector2(-1, -1),
+                PlayerDirection.West => new Vector2(-1, 0),
+                PlayerDirection.NorthWest => new Vector2(-1, 1),
+                _ => Vector2.zero
+            };
+            movementSpeed = movementDirection.PlayerDirectionIsDiagonal() ? 1.15f : 1.5f;
+            player.playerRigidbody.velocity = movementDirectionVector * movementSpeed;
+        }
+
+        float directionUpdateTimer;
         void GetPlayerInput()
         {
+            directionUpdateTimer += Time.deltaTime;
+
             if (Input.GetKeyDown(KeyCode.W) && !currentlyPressedMovementKeys.Contains(MovementKeys.Down))
                 currentlyPressedMovementKeys.Add(MovementKeys.Up);
 
@@ -97,7 +128,12 @@ namespace Assets.Player
                 idleAnimationCoroutineRunning = false;
 
                 player.playerState = PlayerState.Moving;
-                movementDirection = currentlyPressedMovementKeys.GetPlayerDirectionFromCurrentKeyPresses(movementDirection);
+
+                if (directionUpdateTimer >= 0.1f)
+                {
+                    movementDirection = currentlyPressedMovementKeys.GetPlayerDirectionFromCurrentKeyPresses(movementDirection);
+                    directionUpdateTimer = 0f;
+                }
             }
             else
             {
@@ -176,7 +212,7 @@ namespace Assets.Player
         Right
     }
 
-    static class MovementKeysExtensions
+    static class MovementExtensions
     {
         public static PlayerDirection GetPlayerDirectionFromCurrentKeyPresses(this List<MovementKeys> currentKeys, PlayerDirection currentPlayerDirection)
         {
@@ -213,5 +249,9 @@ namespace Assets.Player
 
             return playerDirection;
         }
+
+        public static bool PlayerDirectionIsDiagonal(this PlayerDirection currentDirection)
+            => !(new List<PlayerDirection>() { PlayerDirection.North, PlayerDirection.East, PlayerDirection.South, PlayerDirection.West })
+                .Contains(currentDirection);
     }
 }
