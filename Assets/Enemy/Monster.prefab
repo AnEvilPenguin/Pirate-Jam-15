@@ -127,7 +127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GrowlBackOff: 5
   Rigidbody: {fileID: 4146328796140327968}
-  Speed: 0.25
+  Silent: 0
+  Speed: 50
   Target: {fileID: 0}
   Growls:
   - {fileID: 8300000, guid: 046a73c877518c846ac42afc647543ec, type: 3}
