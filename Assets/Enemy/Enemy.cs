@@ -29,7 +29,7 @@ namespace Assets.Enemy
         }
 
         private void MoveTowardsTarget(Vector3 direction) =>
-            Rigidbody.velocity = direction.normalized * Speed;
+            Rigidbody.velocity = direction.normalized * Speed * Time.deltaTime;
 
         private Vector3 GetDirection(Vector3 targetPosition, Vector3 position) =>
             targetPosition - position;
