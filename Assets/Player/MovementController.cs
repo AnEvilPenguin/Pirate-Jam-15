@@ -53,7 +53,14 @@ namespace Assets.Player
 
         private void Update()
         {
-            if (player.playerState == PlayerState.Dead) return;
+            if (player.playerState == PlayerState.Dead || playerIsInteracting) 
+                return;
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                playerIsInteracting = true;
+                PerformInteraction();
+            }
 
             GetPlayerInput();
 
@@ -86,6 +93,26 @@ namespace Assets.Player
             };
             movementSpeed = movementDirection.PlayerDirectionIsDiagonal() ? 1.15f : 1.5f;
             player.playerRigidbody.velocity = movementDirectionVector * movementSpeed;
+        }
+
+        bool playerIsInteracting = false;
+        void PerformInteraction()
+        {
+            selectedSprites = movementDirection switch
+            {
+                PlayerDirection.North => pickupSpritesNorth,
+                PlayerDirection.NorthEast => pickupSpritesNorthEast,
+                PlayerDirection.East => pickupSpritesEast,
+                PlayerDirection.SouthEast => pickupSpritesSouthEast,
+                PlayerDirection.South => pickupSpritesSouth,
+                PlayerDirection.SouthWest => pickupSpritesSouthWest,
+                PlayerDirection.West => pickupSpritesWest,
+                PlayerDirection.NorthWest => pickupSpritesNorthWest,
+                _ => pickupSpritesSouth
+            };
+
+            StopCoroutine("AnimationCoroutine");
+            StartCoroutine("AnimationCoroutine", selectedSprites);
         }
 
         float directionUpdateTimer;
@@ -125,7 +152,7 @@ namespace Assets.Player
             if (currentlyPressedMovementKeys.Any())
             {
                 StopCoroutine("AnimationCoroutine");
-                idleAnimationCoroutineRunning = false;
+                animationCoroutineRunning = false;
 
                 player.playerState = PlayerState.Moving;
 
@@ -184,14 +211,14 @@ namespace Assets.Player
                 _ => idleSpritesSouth
             };
 
-            if (!idleAnimationCoroutineRunning)
+            if (!animationCoroutineRunning)
                 StartCoroutine("AnimationCoroutine", selectedSprites);
         }
 
-        bool idleAnimationCoroutineRunning = false;
+        bool animationCoroutineRunning = false;
         IEnumerator AnimationCoroutine(List<Sprite> selectedSprites)
         {
-            idleAnimationCoroutineRunning = true;
+            animationCoroutineRunning = true;
             selectedSprites = selectedSprites.OrderBy(sprite => sprite.name).ToList();
 
             for (int i = 0; i < selectedSprites.Count; i++)
@@ -199,7 +226,11 @@ namespace Assets.Player
                 spriteRenderer.sprite = selectedSprites[i];
                 yield return new WaitForSeconds(0.2f);
             }
-            idleAnimationCoroutineRunning = false;
+            animationCoroutineRunning = false;
+
+            if (playerIsInteracting) 
+                playerIsInteracting = false;
+
             yield break;
         }
     }

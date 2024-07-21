@@ -11,5 +11,18 @@ namespace Assets.Player
         [HideInInspector] public PlayerState playerState = PlayerState.Idle;
 
         List<Potion> gatheredPotions = new List<Potion>();
+
+
+        public void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.GetComponent<Potion>() != null)
+            {
+
+            }
+            else if (collision.gameObject.GetComponent<Potion>() != null)
+            {
+
+            }
+        }
     }
 }
