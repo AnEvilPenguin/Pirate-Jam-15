@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Enemy
@@ -8,10 +10,11 @@ namespace Assets.Enemy
         public float GrowlBackOff = 5f;
         public Rigidbody2D Rigidbody;
         public bool Silent = false;
-        public float Speed = 1.0f;
         public GameObject Target;
 
-        [SerializeField] private List<AudioClip> Growls;
+        [SerializeField] 
+        private List<AudioClip> Growls;
+
         private float _growlCooldown;
 
         private void Update()
@@ -21,15 +24,11 @@ namespace Assets.Enemy
 
             var direction = GetDirection(targetPosition, position);
 
-            MoveTowardsTarget(direction);
-
             if (direction.magnitude < 5f && !Silent)
                 Growl();
             // TODO consider different effects when in really close.
-        }
 
-        private void MoveTowardsTarget(Vector3 direction) =>
-            Rigidbody.velocity = direction.normalized * Speed;
+        }
 
         private Vector3 GetDirection(Vector3 targetPosition, Vector3 position) =>
             targetPosition - position;
