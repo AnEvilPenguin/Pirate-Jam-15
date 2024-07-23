@@ -13,7 +13,7 @@ namespace Assets.Potions
 
         List<Sprite> selectedSprites = new List<Sprite>();
 
-        bool isCooking = false;
+        [HideInInspector] public bool isCooking = false;
         int frameRate = 12;
         float idleTime;
 

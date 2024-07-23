@@ -44,6 +44,7 @@ namespace Assets.Player
         PlayerDirection movementDirection = PlayerDirection.South;
 
         List<MovementKeys> currentlyPressedMovementKeys = new List<MovementKeys>();
+        List<MovementKeys> previouslyPressedMovementKeys = new List<MovementKeys>();
         int frameRate = 12;
         float movementSpeed = 1.5f;
         float idleTime;
@@ -53,14 +54,11 @@ namespace Assets.Player
 
         private void Update()
         {
-            if (player.playerState == PlayerState.Dead || playerIsInteracting) 
+            if (player.playerState == PlayerState.Dead) 
                 return;
 
             if (Input.GetKeyDown(KeyCode.Space))
-            {
-                playerIsInteracting = true;
                 PerformInteraction();
-            }
 
             GetPlayerInput();
 
@@ -98,6 +96,31 @@ namespace Assets.Player
         bool playerIsInteracting = false;
         void PerformInteraction()
         {
+            if ((player.potionInRange == null && !player.cauldrenInteractable) || playerIsInteracting)
+                return;
+
+            playerIsInteracting = true;
+            player.playerState = PlayerState.Interracting;
+            //previouslyPressedMovementKeys = currentlyPressedMovementKeys;
+            //currentlyPressedMovementKeys = new List<MovementKeys>();
+
+            if (player.potionInRange != null)
+            {
+                player.PickUpPotion();
+            }
+            else if (player.cauldrenInteractable)
+            {
+                var brewInCauldren = player.BrewInCauldren();
+
+                if (player.cauldrenInteractable && !brewInCauldren)
+                {
+                    playerIsInteracting = false;
+                    player.playerState = PlayerState.Idle;
+                    return;
+                }
+            }
+
+
             selectedSprites = movementDirection switch
             {
                 PlayerDirection.North => pickupSpritesNorth,
@@ -112,61 +135,67 @@ namespace Assets.Player
             };
 
             StopCoroutine("AnimationCoroutine");
+            animationCoroutineRunning = false;
             StartCoroutine("AnimationCoroutine", selectedSprites);
         }
 
-        float directionUpdateTimer;
+        //float directionUpdateTimer;
         void GetPlayerInput()
         {
-            directionUpdateTimer += Time.deltaTime;
-
             if (Input.GetKeyDown(KeyCode.W) && !currentlyPressedMovementKeys.Contains(MovementKeys.Down))
                 currentlyPressedMovementKeys.Add(MovementKeys.Up);
 
-            if (Input.GetKeyUp(KeyCode.W))
+            if (!Input.GetKey(KeyCode.W))
                 currentlyPressedMovementKeys.Remove(MovementKeys.Up);
 
 
             if (Input.GetKeyDown(KeyCode.A) && !currentlyPressedMovementKeys.Contains(MovementKeys.Right))
                 currentlyPressedMovementKeys.Add(MovementKeys.Left);
 
-            if (Input.GetKeyUp(KeyCode.A))
+            if (!Input.GetKey(KeyCode.A))
                 currentlyPressedMovementKeys.Remove(MovementKeys.Left);
 
 
             if (Input.GetKeyDown(KeyCode.S) && !currentlyPressedMovementKeys.Contains(MovementKeys.Up))
                 currentlyPressedMovementKeys.Add(MovementKeys.Down);
 
-            if (Input.GetKeyUp(KeyCode.S))
+            if (!Input.GetKey(KeyCode.S))
                 currentlyPressedMovementKeys.Remove(MovementKeys.Down);
 
 
             if (Input.GetKeyDown(KeyCode.D) && !currentlyPressedMovementKeys.Contains(MovementKeys.Left))
                 currentlyPressedMovementKeys.Add(MovementKeys.Right);
 
-            if (Input.GetKeyUp(KeyCode.D))
+            if (!Input.GetKey(KeyCode.D))
                 currentlyPressedMovementKeys.Remove(MovementKeys.Right);
 
 
 
+            if (playerIsInteracting)
+                return;
+
+            //directionUpdateTimer += Time.deltaTime;
+
             if (currentlyPressedMovementKeys.Any())
             {
-                StopCoroutine("AnimationCoroutine");
-                animationCoroutineRunning = false;
+                if (animationCoroutineRunning)
+                {
+                    StopCoroutine("AnimationCoroutine");
+                    animationCoroutineRunning = false;
+                }
 
                 player.playerState = PlayerState.Moving;
 
-                if (directionUpdateTimer >= 0.1f)
-                {
+                //if (directionUpdateTimer >= 0.01f)
+                //{
                     movementDirection = currentlyPressedMovementKeys.GetPlayerDirectionFromCurrentKeyPresses(movementDirection);
-                    directionUpdateTimer = 0f;
-                }
+                    //directionUpdateTimer = 0f;
+                //}
             }
             else
             {
                 player.playerState = PlayerState.Idle;
             }
-
         }
 
         void ApplyPlayerMovement()
@@ -228,8 +257,12 @@ namespace Assets.Player
             }
             animationCoroutineRunning = false;
 
-            if (playerIsInteracting) 
+            if (playerIsInteracting)
+            {
+                //previouslyPressedMovementKeys.ForEach(key => currentlyPressedMovementKeys.Add(key));
+                //previouslyPressedMovementKeys = new List<MovementKeys>();
                 playerIsInteracting = false;
+            }
 
             yield break;
         }
