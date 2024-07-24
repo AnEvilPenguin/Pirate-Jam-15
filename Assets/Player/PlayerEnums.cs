@@ -16,7 +16,8 @@
     {
         Dead,
         Idle,
-        Moving
+        Moving,
+        Interracting
     }
 }
 

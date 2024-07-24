@@ -44,12 +44,21 @@ namespace Assets.Player
         PlayerDirection movementDirection = PlayerDirection.South;
 
         List<MovementKeys> currentlyPressedMovementKeys = new List<MovementKeys>();
+        List<MovementKeys> previouslyPressedMovementKeys = new List<MovementKeys>();
         int frameRate = 12;
+        float movementSpeed = 1.5f;
         float idleTime;
+
+        Vector2 movementDirectionVector;
+        
 
         private void Update()
         {
-            if (player.playerState == PlayerState.Dead) return;
+            if (player.playerState == PlayerState.Dead) 
+                return;
+
+            if (Input.GetKeyDown(KeyCode.Space))
+                PerformInteraction();
 
             GetPlayerInput();
 
@@ -60,50 +69,133 @@ namespace Assets.Player
                 PlayIdleAnimation();
         }
 
+        void FixedUpdate()
+        {
+            if (player.playerState != PlayerState.Moving)
+            {
+                player.playerRigidbody.velocity = Vector2.zero;
+                return;
+            }
+
+            movementDirectionVector = movementDirection switch
+            {
+                PlayerDirection.North => new Vector2(0, 1),
+                PlayerDirection.NorthEast => new Vector2(1, 1),
+                PlayerDirection.East => new Vector2(1, 0),
+                PlayerDirection.SouthEast => new Vector2(1, -1),
+                PlayerDirection.South => new Vector2(0, -1),
+                PlayerDirection.SouthWest => new Vector2(-1, -1),
+                PlayerDirection.West => new Vector2(-1, 0),
+                PlayerDirection.NorthWest => new Vector2(-1, 1),
+                _ => Vector2.zero
+            };
+            movementSpeed = movementDirection.PlayerDirectionIsDiagonal() ? 1.15f : 1.5f;
+            player.playerRigidbody.velocity = movementDirectionVector * movementSpeed;
+        }
+
+        bool playerIsInteracting = false;
+        void PerformInteraction()
+        {
+            if ((player.potionInRange == null && !player.cauldrenInteractable) || playerIsInteracting)
+                return;
+
+            playerIsInteracting = true;
+            player.playerState = PlayerState.Interracting;
+            //previouslyPressedMovementKeys = currentlyPressedMovementKeys;
+            //currentlyPressedMovementKeys = new List<MovementKeys>();
+
+            if (player.potionInRange != null)
+            {
+                player.PickUpPotion();
+            }
+            else if (player.cauldrenInteractable)
+            {
+                var brewInCauldren = player.BrewInCauldren();
+
+                if (player.cauldrenInteractable && !brewInCauldren)
+                {
+                    playerIsInteracting = false;
+                    player.playerState = PlayerState.Idle;
+                    return;
+                }
+            }
+
+
+            selectedSprites = movementDirection switch
+            {
+                PlayerDirection.North => pickupSpritesNorth,
+                PlayerDirection.NorthEast => pickupSpritesNorthEast,
+                PlayerDirection.East => pickupSpritesEast,
+                PlayerDirection.SouthEast => pickupSpritesSouthEast,
+                PlayerDirection.South => pickupSpritesSouth,
+                PlayerDirection.SouthWest => pickupSpritesSouthWest,
+                PlayerDirection.West => pickupSpritesWest,
+                PlayerDirection.NorthWest => pickupSpritesNorthWest,
+                _ => pickupSpritesSouth
+            };
+
+            StopCoroutine("AnimationCoroutine");
+            animationCoroutineRunning = false;
+            StartCoroutine("AnimationCoroutine", selectedSprites);
+        }
+
+        //float directionUpdateTimer;
         void GetPlayerInput()
         {
             if (Input.GetKeyDown(KeyCode.W) && !currentlyPressedMovementKeys.Contains(MovementKeys.Down))
                 currentlyPressedMovementKeys.Add(MovementKeys.Up);
 
-            if (Input.GetKeyUp(KeyCode.W))
+            if (!Input.GetKey(KeyCode.W))
                 currentlyPressedMovementKeys.Remove(MovementKeys.Up);
 
 
             if (Input.GetKeyDown(KeyCode.A) && !currentlyPressedMovementKeys.Contains(MovementKeys.Right))
                 currentlyPressedMovementKeys.Add(MovementKeys.Left);
 
-            if (Input.GetKeyUp(KeyCode.A))
+            if (!Input.GetKey(KeyCode.A))
                 currentlyPressedMovementKeys.Remove(MovementKeys.Left);
 
 
             if (Input.GetKeyDown(KeyCode.S) && !currentlyPressedMovementKeys.Contains(MovementKeys.Up))
                 currentlyPressedMovementKeys.Add(MovementKeys.Down);
 
-            if (Input.GetKeyUp(KeyCode.S))
+            if (!Input.GetKey(KeyCode.S))
                 currentlyPressedMovementKeys.Remove(MovementKeys.Down);
 
 
             if (Input.GetKeyDown(KeyCode.D) && !currentlyPressedMovementKeys.Contains(MovementKeys.Left))
                 currentlyPressedMovementKeys.Add(MovementKeys.Right);
 
-            if (Input.GetKeyUp(KeyCode.D))
+            if (!Input.GetKey(KeyCode.D))
                 currentlyPressedMovementKeys.Remove(MovementKeys.Right);
 
 
 
+            if (playerIsInteracting)
+                return;
+
+            //directionUpdateTimer += Time.deltaTime;
+
             if (currentlyPressedMovementKeys.Any())
             {
-                StopCoroutine("AnimationCoroutine");
-                idleAnimationCoroutineRunning = false;
+                if (animationCoroutineRunning)
+                {
+                    StopCoroutine("AnimationCoroutine");
+                    animationCoroutineRunning = false;
+                }
 
                 player.playerState = PlayerState.Moving;
-                movementDirection = currentlyPressedMovementKeys.GetPlayerDirectionFromCurrentKeyPresses(movementDirection);
+
+                //if (directionUpdateTimer >= 0.01f)
+                //{
+                    movementDirection = currentlyPressedMovementKeys.GetPlayerDirectionFromCurrentKeyPresses(movementDirection);
+                    //directionUpdateTimer = 0f;
+                //}
             }
             else
             {
                 player.playerState = PlayerState.Idle;
             }
-
         }
 
         void ApplyPlayerMovement()
@@ -148,14 +240,14 @@ namespace Assets.Player
                 _ => idleSpritesSouth
             };
 
-            if (!idleAnimationCoroutineRunning)
+            if (!animationCoroutineRunning)
                 StartCoroutine("AnimationCoroutine", selectedSprites);
         }
 
-        bool idleAnimationCoroutineRunning = false;
+        bool animationCoroutineRunning = false;
         IEnumerator AnimationCoroutine(List<Sprite> selectedSprites)
         {
-            idleAnimationCoroutineRunning = true;
+            animationCoroutineRunning = true;
             selectedSprites = selectedSprites.OrderBy(sprite => sprite.name).ToList();
 
             for (int i = 0; i < selectedSprites.Count; i++)
@@ -163,7 +255,15 @@ namespace Assets.Player
                 spriteRenderer.sprite = selectedSprites[i];
                 yield return new WaitForSeconds(0.2f);
             }
-            idleAnimationCoroutineRunning = false;
+            animationCoroutineRunning = false;
+
+            if (playerIsInteracting)
+            {
+                //previouslyPressedMovementKeys.ForEach(key => currentlyPressedMovementKeys.Add(key));
+                //previouslyPressedMovementKeys = new List<MovementKeys>();
+                playerIsInteracting = false;
+            }
+
             yield break;
         }
     }
@@ -176,7 +276,7 @@ namespace Assets.Player
         Right
     }
 
-    static class MovementKeysExtensions
+    static class MovementExtensions
     {
         public static PlayerDirection GetPlayerDirectionFromCurrentKeyPresses(this List<MovementKeys> currentKeys, PlayerDirection currentPlayerDirection)
         {
@@ -213,5 +313,9 @@ namespace Assets.Player
 
             return playerDirection;
         }
+
+        public static bool PlayerDirectionIsDiagonal(this PlayerDirection currentDirection)
+            => !(new List<PlayerDirection>() { PlayerDirection.North, PlayerDirection.East, PlayerDirection.South, PlayerDirection.West })
+                .Contains(currentDirection);
     }
 }
