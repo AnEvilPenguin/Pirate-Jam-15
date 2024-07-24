@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMaster
 {
     private static GameMaster _instance = new GameMaster();
 
-    // make sure the constructor is private, so it can only be instantiated here
+    // Make sure the constructor is private, so it can only be instantiated here.
     private GameMaster()
     {
     }
@@ -14,4 +15,18 @@ public class GameMaster
     }
 
     public bool TutorialCompleted = false;
+
+    public void LoadFirstGameScene(bool tutorialCompleted)
+    {
+        TutorialCompleted = tutorialCompleted;
+
+        LoadFirstGameScene();
+    }
+
+    public void LoadFirstGameScene()
+    {
+        var scene = TutorialCompleted ? "MonsterTest" : "Tutorial";
+
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
+    }
 }
