@@ -18,8 +18,9 @@ public class HoldEnter : MonoBehaviour
         if (Input.GetKey(KeyCode.Return))
         {
             if (_frame == SpritesList.Count - 1)
-                Debug.Log("Move to next scene");
+                GameMaster.Instance.LoadFirstGameScene(true);
 
+                
             PlayAnimation();
         }
         else
