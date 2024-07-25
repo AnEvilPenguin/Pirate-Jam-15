@@ -1,4 +1,4 @@
-using Assets.Player;
+using Assets;
 using UnityEngine;
 
 public class Timer : MonoBehaviour
@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
     {
         ResetTimer();
     }
-
+   
     void Update()
     {
         if (_timer > 0)
@@ -43,25 +43,25 @@ public class Timer : MonoBehaviour
         else if (_timer > 15)
         {
             Movement.SetIdle(false);
-            Movement.SetDirection(PlayerDirection.East);
+            Movement.SetDirection(CompassDirection.East);
             DKey.SetAnimationState(1);
         }
         else if (_timer > 10)
         {
             DKey.SetAnimationState(0);
-            Movement.SetDirection(PlayerDirection.North);
+            Movement.SetDirection(CompassDirection.North);
             WKey.SetAnimationState(1);
         }
         else if (_timer > 5)
         {
             WKey.SetAnimationState(0);
-            Movement.SetDirection(PlayerDirection.West);
+            Movement.SetDirection(CompassDirection.West);
             AKey.SetAnimationState(1);
         }
         else if (_timer > 0)
         {
             AKey.SetAnimationState(0);
-            Movement.SetDirection(PlayerDirection.South);
+            Movement.SetDirection(CompassDirection.South);
             SKey.SetAnimationState(1);
         }
     }
