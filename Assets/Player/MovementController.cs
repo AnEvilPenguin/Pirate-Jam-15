@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Assets;
 
 namespace Assets.Player
 {
@@ -40,8 +41,8 @@ namespace Assets.Player
         #endregion
         List<Sprite> selectedSprites = new List<Sprite>();
 
-        PlayerDirection spriteDirection = PlayerDirection.South;
-        PlayerDirection movementDirection = PlayerDirection.South;
+        CompassDirection spriteDirection = CompassDirection.South;
+        CompassDirection movementDirection = CompassDirection.South;
 
         List<MovementKeys> currentlyPressedMovementKeys = new List<MovementKeys>();
         List<MovementKeys> previouslyPressedMovementKeys = new List<MovementKeys>();
@@ -79,14 +80,14 @@ namespace Assets.Player
 
             movementDirectionVector = movementDirection switch
             {
-                PlayerDirection.North => new Vector2(0, 1),
-                PlayerDirection.NorthEast => new Vector2(1, 1),
-                PlayerDirection.East => new Vector2(1, 0),
-                PlayerDirection.SouthEast => new Vector2(1, -1),
-                PlayerDirection.South => new Vector2(0, -1),
-                PlayerDirection.SouthWest => new Vector2(-1, -1),
-                PlayerDirection.West => new Vector2(-1, 0),
-                PlayerDirection.NorthWest => new Vector2(-1, 1),
+                CompassDirection.North => new Vector2(0, 1),
+                CompassDirection.NorthEast => new Vector2(1, 1),
+                CompassDirection.East => new Vector2(1, 0),
+                CompassDirection.SouthEast => new Vector2(1, -1),
+                CompassDirection.South => new Vector2(0, -1),
+                CompassDirection.SouthWest => new Vector2(-1, -1),
+                CompassDirection.West => new Vector2(-1, 0),
+                CompassDirection.NorthWest => new Vector2(-1, 1),
                 _ => Vector2.zero
             };
             movementSpeed = movementDirection.PlayerDirectionIsDiagonal() ? 1.15f : 1.5f;
@@ -123,14 +124,14 @@ namespace Assets.Player
 
             selectedSprites = movementDirection switch
             {
-                PlayerDirection.North => pickupSpritesNorth,
-                PlayerDirection.NorthEast => pickupSpritesNorthEast,
-                PlayerDirection.East => pickupSpritesEast,
-                PlayerDirection.SouthEast => pickupSpritesSouthEast,
-                PlayerDirection.South => pickupSpritesSouth,
-                PlayerDirection.SouthWest => pickupSpritesSouthWest,
-                PlayerDirection.West => pickupSpritesWest,
-                PlayerDirection.NorthWest => pickupSpritesNorthWest,
+                CompassDirection.North => pickupSpritesNorth,
+                CompassDirection.NorthEast => pickupSpritesNorthEast,
+                CompassDirection.East => pickupSpritesEast,
+                CompassDirection.SouthEast => pickupSpritesSouthEast,
+                CompassDirection.South => pickupSpritesSouth,
+                CompassDirection.SouthWest => pickupSpritesSouthWest,
+                CompassDirection.West => pickupSpritesWest,
+                CompassDirection.NorthWest => pickupSpritesNorthWest,
                 _ => pickupSpritesSouth
             };
 
@@ -202,14 +203,14 @@ namespace Assets.Player
         {
             selectedSprites = movementDirection switch
             {
-                PlayerDirection.North => walkingSpritesNorth,
-                PlayerDirection.NorthEast => walkingSpritesNorthEast,
-                PlayerDirection.East => walkingSpritesEast,
-                PlayerDirection.SouthEast => walkingSpritesSouthEast,
-                PlayerDirection.South => walkingSpritesSouth,
-                PlayerDirection.SouthWest => walkingSpritesSouthWest,
-                PlayerDirection.West => walkingSpritesWest,
-                PlayerDirection.NorthWest => walkingSpritesNorthWest,
+                CompassDirection.North => walkingSpritesNorth,
+                CompassDirection.NorthEast => walkingSpritesNorthEast,
+                CompassDirection.East => walkingSpritesEast,
+                CompassDirection.SouthEast => walkingSpritesSouthEast,
+                CompassDirection.South => walkingSpritesSouth,
+                CompassDirection.SouthWest => walkingSpritesSouthWest,
+                CompassDirection.West => walkingSpritesWest,
+                CompassDirection.NorthWest => walkingSpritesNorthWest,
                 _ => walkingSpritesSouth
             };
 
@@ -229,14 +230,14 @@ namespace Assets.Player
         {
             selectedSprites = movementDirection switch
             {
-                PlayerDirection.North => idleSpritesNorth,
-                PlayerDirection.NorthEast => idleSpritesNorthEast,
-                PlayerDirection.East => idleSpritesEast,
-                PlayerDirection.SouthEast => idleSpritesSouthEast,
-                PlayerDirection.South => idleSpritesSouth,
-                PlayerDirection.SouthWest => idleSpritesSouthWest,
-                PlayerDirection.West => idleSpritesWest,
-                PlayerDirection.NorthWest => idleSpritesNorthWest,
+                CompassDirection.North => idleSpritesNorth,
+                CompassDirection.NorthEast => idleSpritesNorthEast,
+                CompassDirection.East => idleSpritesEast,
+                CompassDirection.SouthEast => idleSpritesSouthEast,
+                CompassDirection.South => idleSpritesSouth,
+                CompassDirection.SouthWest => idleSpritesSouthWest,
+                CompassDirection.West => idleSpritesWest,
+                CompassDirection.NorthWest => idleSpritesNorthWest,
                 _ => idleSpritesSouth
             };
 
@@ -278,44 +279,44 @@ namespace Assets.Player
 
     static class MovementExtensions
     {
-        public static PlayerDirection GetPlayerDirectionFromCurrentKeyPresses(this List<MovementKeys> currentKeys, PlayerDirection currentPlayerDirection)
+        public static CompassDirection GetPlayerDirectionFromCurrentKeyPresses(this List<MovementKeys> currentKeys, CompassDirection currentPlayerDirection)
         {
-            PlayerDirection playerDirection = currentPlayerDirection;
+            CompassDirection playerDirection = currentPlayerDirection;
 
             if (currentKeys.Count == 1)
             {
                 if (currentKeys.Contains(MovementKeys.Up))
-                    playerDirection = PlayerDirection.North;
+                    playerDirection = CompassDirection.North;
 
                 if (currentKeys.Contains(MovementKeys.Right))
-                    playerDirection = PlayerDirection.East;
+                    playerDirection = CompassDirection.East;
 
                 if (currentKeys.Contains(MovementKeys.Down))
-                    playerDirection = PlayerDirection.South;
+                    playerDirection = CompassDirection.South;
 
                 if (currentKeys.Contains(MovementKeys.Left))
-                    playerDirection = PlayerDirection.West;
+                    playerDirection = CompassDirection.West;
             }
             else if (currentKeys.Count == 2)
             {
                 if (currentKeys.Contains(MovementKeys.Up) && currentKeys.Contains(MovementKeys.Right))
-                    playerDirection = PlayerDirection.NorthEast;
+                    playerDirection = CompassDirection.NorthEast;
 
                 if (currentKeys.Contains(MovementKeys.Up) && currentKeys.Contains(MovementKeys.Left))
-                    playerDirection = PlayerDirection.NorthWest;
+                    playerDirection = CompassDirection.NorthWest;
 
                 if (currentKeys.Contains(MovementKeys.Down) && currentKeys.Contains(MovementKeys.Right))
-                    playerDirection = PlayerDirection.SouthEast;
+                    playerDirection = CompassDirection.SouthEast;
 
                 if (currentKeys.Contains(MovementKeys.Down) && currentKeys.Contains(MovementKeys.Left))
-                    playerDirection = PlayerDirection.SouthWest;
+                    playerDirection = CompassDirection.SouthWest;
             }
 
             return playerDirection;
         }
 
-        public static bool PlayerDirectionIsDiagonal(this PlayerDirection currentDirection)
-            => !(new List<PlayerDirection>() { PlayerDirection.North, PlayerDirection.East, PlayerDirection.South, PlayerDirection.West })
+        public static bool PlayerDirectionIsDiagonal(this CompassDirection currentDirection)
+            => !(new List<CompassDirection>() { CompassDirection.North, CompassDirection.East, CompassDirection.South, CompassDirection.West })
                 .Contains(currentDirection);
     }
 }

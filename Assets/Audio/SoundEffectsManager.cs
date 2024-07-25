@@ -8,7 +8,7 @@ public class SoundEffectsManager : MonoBehaviour
 
     [SerializeField] private AudioSource soundEffectObject;
 
-    private void Awake()
+    private void Start()
     {
         if (instance == null)
             instance = this;

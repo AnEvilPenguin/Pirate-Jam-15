@@ -1,12 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Assets.Player;
+using Assets;
 
 public class MovementAnimations : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
-    public PlayerDirection Direction;
+    public CompassDirection Direction;
     public bool IsIdle = true;
 
     public List<Sprite> idleSpritesSouth = new List<Sprite>();
@@ -24,7 +23,7 @@ public class MovementAnimations : MonoBehaviour
         ApplyAnimation();
     }
 
-    public void SetDirection(PlayerDirection direction) =>
+    public void SetDirection(CompassDirection direction) =>
         Direction = direction;
 
     public void SetIdle(bool isIdle) => 
@@ -37,19 +36,19 @@ public class MovementAnimations : MonoBehaviour
         else
             switch (Direction)
             {
-                case PlayerDirection.North:
+                case CompassDirection.North:
                     selectedSprites = walkingSpritesNorth;
                     break;
 
-                case PlayerDirection.South:
+                case CompassDirection.South:
                     selectedSprites = walkingSpritesSouth;
                     break;
 
-                case PlayerDirection.West:
+                case CompassDirection.West:
                     selectedSprites = walkingSpritesWest;
                     break;
 
-                case PlayerDirection.East:
+                case CompassDirection.East:
                     selectedSprites = walkingSpritesEast;
                     break;
             }

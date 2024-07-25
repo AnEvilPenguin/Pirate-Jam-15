@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Enemy
@@ -27,7 +25,6 @@ namespace Assets.Enemy
             if (direction.magnitude < 5f && !Silent)
                 Growl();
             // TODO consider different effects when in really close.
-
         }
 
         private Vector3 GetDirection(Vector3 targetPosition, Vector3 position) =>
