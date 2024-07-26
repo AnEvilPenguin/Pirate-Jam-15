@@ -6,6 +6,7 @@ public class MinuteCounter : MonoBehaviour
 {
     public ProgressBar ProgressBar;
     public List<Color> ColorList;
+    public bool Invert;
 
     private float _maxTimer = 60;
     private float _timer;
@@ -22,9 +23,9 @@ public class MinuteCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _timer -= Time.deltaTime;
+        _timer = Invert ? _timer + Time.deltaTime : _timer - Time.deltaTime;
 
-        if (_timer <= 0)
+        if (Invert ? _timer >= _maxTimer : _timer <= 0)
             ResetTimer();
 
         UpdateProgressBar();
@@ -32,7 +33,7 @@ public class MinuteCounter : MonoBehaviour
 
     private void ResetTimer()
     {
-        _timer = 60;
+        _timer = Invert ? 0 : _maxTimer;
     }
 
     private void UpdateProgressBar()
