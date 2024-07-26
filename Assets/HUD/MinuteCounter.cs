@@ -1,46 +1,55 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class MinuteCounter : MonoBehaviour
 {
+    public event System.EventHandler TimerElapsed;
+
+    public delegate void TimerElapsedEventHandler(EventArgs e);
+
     public ProgressBar ProgressBar;
     public List<Color> ColorList;
     public bool Invert;
-
-    private float _maxTimer = 60;
+    public float MaxTimer = 60;
+    
     private float _timer;
 
-
-    // Start is called before the first frame update
     void Start()
     {
-        ResetTimer();
-        ProgressBar.Maximum = (int)_maxTimer;
-        ProgressBar.Current = (int)_maxTimer;
+        ResetTimer(false);
+        ProgressBar.Maximum = (int)MaxTimer;
+        ProgressBar.Current = (int)MaxTimer;
     }
 
-    // Update is called once per frame
     void Update()
     {
         _timer = Invert ? _timer + Time.deltaTime : _timer - Time.deltaTime;
 
-        if (Invert ? _timer >= _maxTimer : _timer <= 0)
-            ResetTimer();
+        if (Invert ? _timer >= MaxTimer : _timer <= 0)
+            ResetTimer(true);
 
         UpdateProgressBar();
     }
 
-    private void ResetTimer()
+    private void ResetTimer(bool sendEvent)
     {
-        _timer = Invert ? 0 : _maxTimer;
+        _timer = Invert ? 0 : MaxTimer;
+
+        if (!sendEvent)
+            return;
+
+        var raiseEvent = TimerElapsed;
+
+        if (raiseEvent != null)
+            raiseEvent(this, new EventArgs());
     }
 
     private void UpdateProgressBar()
     {
         ProgressBar.Current = (int)_timer;
 
-        var colorIndex = (int)((_timer / _maxTimer) * (ColorList.Count - 1));
+        var colorIndex = (int)((_timer / MaxTimer) * (ColorList.Count - 1));
         ProgressBar.Color = ColorList[colorIndex];
     }
 }
