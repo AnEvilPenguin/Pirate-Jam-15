@@ -4122,7 +4122,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -5382,7 +5382,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!1 &594631284
 GameObject:
@@ -8505,7 +8505,7 @@ GameObject:
   - component: {fileID: 1398412228}
   - component: {fileID: 1398412227}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: FloorGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8612,7 +8612,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -892292087, guid: 06874c93f342ebd449e5e85aa0894327, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8650,7 +8650,7 @@ GameObject:
   - component: {fileID: 1868401606}
   - component: {fileID: 1868401605}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: WallGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8968,6 +8968,10 @@ PrefabInstance:
       propertyPath: Target
       value: 
       objectReference: {fileID: 1763805204}
+    - target: {fileID: 7536068955271706299, guid: 812fdc14d33235c49a3e36d3ada525c1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8908188473863897005, guid: 812fdc14d33235c49a3e36d3ada525c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.94
