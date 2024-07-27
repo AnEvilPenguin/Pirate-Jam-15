@@ -7,6 +7,8 @@ public class SoundEffectsManager : MonoBehaviour
     public static SoundEffectsManager instance;
 
     [SerializeField] private AudioSource soundEffectObject;
+    public bool PitchShift = true;
+    public float MaxPitchShift = 0.1f;
 
     private void Start()
     {
@@ -21,6 +23,9 @@ public class SoundEffectsManager : MonoBehaviour
         audioSource.clip = audioClip;
 
         audioSource.volume = volume;
+
+        if (PitchShift)
+            audioSource.pitch = audioSource.pitch + Random.Range(-1 * MaxPitchShift, MaxPitchShift);
 
         audioSource.Play();
 
