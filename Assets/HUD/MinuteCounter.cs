@@ -17,7 +17,7 @@ public class MinuteCounter : MonoBehaviour
 
     void Start()
     {
-        ResetTimer(false);
+        ResetTimer();
         ProgressBar.Maximum = (int)MaxTimer;
         ProgressBar.Current = (int)MaxTimer;
     }
@@ -27,23 +27,16 @@ public class MinuteCounter : MonoBehaviour
         _timer = Invert ? _timer + Time.deltaTime : _timer - Time.deltaTime;
 
         if (Invert ? _timer >= MaxTimer : _timer <= 0)
-            ResetTimer(true);
-
+        {
+            ResetTimer();
+            RaiseEvent();
+        }
+        
         UpdateProgressBar();
     }
 
-    private void ResetTimer(bool sendEvent)
-    {
+    private void ResetTimer() =>
         _timer = Invert ? 0 : MaxTimer;
-
-        if (!sendEvent)
-            return;
-
-        var raiseEvent = TimerElapsed;
-
-        if (raiseEvent != null)
-            raiseEvent(this, new EventArgs());
-    }
 
     private void UpdateProgressBar()
     {
@@ -51,5 +44,13 @@ public class MinuteCounter : MonoBehaviour
 
         var colorIndex = (int)((_timer / MaxTimer) * (ColorList.Count - 1));
         ProgressBar.Color = ColorList[colorIndex];
+    }
+
+    private void RaiseEvent()
+    {
+        var raiseEvent = TimerElapsed;
+
+        if (raiseEvent != null)
+            raiseEvent(this, new EventArgs());
     }
 }
