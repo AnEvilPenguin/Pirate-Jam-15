@@ -25,7 +25,7 @@ public class GameMaster
 
     public void LoadFirstGameScene()
     {
-        var scene = TutorialCompleted ? "MonsterTest" : "Tutorial";
+        var scene = TutorialCompleted ? "Level1" : "Tutorial";
 
         SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
