@@ -386,6 +386,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1957238424}
     - target: {fileID: 2103659427824760249, guid: d1aede576990f6743afcf2b97c78cfeb, type: 3}
+      propertyPath: lightController
+      value: 
+      objectReference: {fileID: 1957238422}
+    - target: {fileID: 2103659427824760249, guid: d1aede576990f6743afcf2b97c78cfeb, type: 3}
       propertyPath: spawnPoints.Array.data[0]
       value: 
       objectReference: {fileID: 1476819017}

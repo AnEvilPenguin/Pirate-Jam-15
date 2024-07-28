@@ -32,7 +32,19 @@ public class LightController : MonoBehaviour
             var current = scaleX - ReductionAmount;
             Mask.localScale = new Vector2(current, current);
         }
+        else if (scaleX < _maskTarget)
+        {
+            var current = scaleX + ReductionAmount;
+            Mask.localScale = new Vector2(current, current);
+        }
 
+    }
+
+    public void IncreaseLightTimes(int times)
+    {
+        _maskTarget = Mask.localScale.x + (_maskReduction * times);
+
+        Collider.radius += _colliderReduction * times;
     }
 
     private void OnTimerElapsed(System.Object sender, System.EventArgs e)

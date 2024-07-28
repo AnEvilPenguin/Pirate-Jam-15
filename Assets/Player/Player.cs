@@ -15,6 +15,10 @@ namespace Assets.Player
         [HideInInspector] public Potion potionInRange = null;
         [HideInInspector] public bool cauldrenInteractable = false;
 
+        private void Start()
+        {
+            GameMaster.Instance.PlayerDied = false;
+        }
 
         private void Update()
         {
@@ -50,6 +54,7 @@ namespace Assets.Player
             {
                 gatheredPotions = new List<Potion>();
                 gameLogic.SetNextBrewLevel();
+                gameLogic.IncreaseLightLevel();
                 return true;
             }
             return false;
@@ -57,6 +62,7 @@ namespace Assets.Player
 
         public void KillPlayer()
         {
+            GameMaster.Instance.PlayerDied = true;
             // FIXME some sort of death animation?
             GameMaster.Instance.LoadEndScene();
         }

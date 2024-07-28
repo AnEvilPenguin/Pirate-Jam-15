@@ -6,6 +6,10 @@ public class GameMaster
 {
     private static GameMaster _instance = new GameMaster();
 
+    public bool TutorialCompleted = false;
+    public bool PlayerDied = false;
+
+
     // Make sure the constructor is private, so it can only be instantiated here.
     private GameMaster()
     {
@@ -14,8 +18,6 @@ public class GameMaster
     public static GameMaster Instance {
         get { return _instance; } 
     }
-
-    public bool TutorialCompleted = false;
 
     public void LoadFirstGameScene(bool tutorialCompleted)
     {
