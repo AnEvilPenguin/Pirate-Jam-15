@@ -12,6 +12,7 @@ namespace Assets
         public UserInterface userInterface;
         public List<GameObject> potionPrefabs = new List<GameObject>();
         public List<GameObject> spawnPoints = new List<GameObject>();
+        public LightController lightController;
 
         List<AvailablePotionPot> availablePotionPots = new List<AvailablePotionPot>();
         List<AvailableSpawnPoint> avilableSpawnPoints = new List<AvailableSpawnPoint>();
@@ -75,6 +76,7 @@ namespace Assets
                     break;
                 case BrewLevel.Complete:
                     // Complete level and show score
+                    GameMaster.Instance.LoadEndScene();
                     break;
                 default:
                     break;
@@ -82,6 +84,9 @@ namespace Assets
             userInterface.SetPotionsCount(potionsRequiredForCurrentBrew.Count);
             AddPotionsToMap();
         }
+
+        public void IncreaseLightLevel() =>
+            lightController.IncreaseLightTimes(2);
 
         private List<PotionType> GetPotionsRequiredForBrew(int amountRequired)
         {
