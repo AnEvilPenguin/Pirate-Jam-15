@@ -13,7 +13,7 @@ namespace Assets.Player
 
         [HideInInspector] public List<Potion> gatheredPotions = new List<Potion>();
         [HideInInspector] public Potion potionInRange = null;
-        [HideInInspector] public bool cauldrenInteractable = false;
+        [HideInInspector] public Cauldren cauldren;
 
         private void Start()
         {
@@ -29,16 +29,21 @@ namespace Assets.Player
         {
             if (collision.gameObject.GetComponent<Potion>() != null)
                 potionInRange = collision.gameObject.GetComponent<Potion>();
-            else if (collision.gameObject.GetComponent<Cauldren>() != null)
-                cauldrenInteractable = true;
+            else if (collision.gameObject.GetComponent<Cauldren>() != null && !cauldren)
+                cauldren = collision.gameObject.GetComponent<Cauldren>();
+                
         }
 
         public void OnTriggerExit2D(Collider2D collision)
         {
             if (collision.gameObject.GetComponent<Potion>() != null)
                 potionInRange = null;
-            else if (collision.gameObject.GetComponent<Cauldren>() != null)
-                cauldrenInteractable = false;
+            else if (collision.gameObject.GetComponent<Cauldren>() != null && cauldren)
+            {
+                cauldren.isCooking = false;
+                cauldren = null;
+            }
+                
         }
 
         public void PickUpPotion()
@@ -52,6 +57,7 @@ namespace Assets.Player
         {
             if (gatheredPotions.Count == gameLogic.potionsRequiredForCurrentBrew.Count)
             {
+                cauldren.isCooking = true;
                 gatheredPotions = new List<Potion>();
                 gameLogic.SetNextBrewLevel();
                 gameLogic.IncreaseLightLevel();

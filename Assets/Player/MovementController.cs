@@ -97,7 +97,7 @@ namespace Assets.Player
         bool playerIsInteracting = false;
         void PerformInteraction()
         {
-            if ((player.potionInRange == null && !player.cauldrenInteractable) || playerIsInteracting)
+            if ((player.potionInRange == null && !player.cauldren) || playerIsInteracting)
                 return;
 
             playerIsInteracting = true;
@@ -109,11 +109,11 @@ namespace Assets.Player
             {
                 player.PickUpPotion();
             }
-            else if (player.cauldrenInteractable)
+            else if (player.cauldren)
             {
                 var brewInCauldren = player.BrewInCauldren();
 
-                if (player.cauldrenInteractable && !brewInCauldren)
+                if (player.cauldren && !brewInCauldren)
                 {
                     playerIsInteracting = false;
                     player.playerState = PlayerState.Idle;
