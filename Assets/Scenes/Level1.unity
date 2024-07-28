@@ -53918,7 +53918,7 @@ MonoBehaviour:
   Collider: {fileID: 2588133975308081651}
   Mask: {fileID: 3866970967493933376}
   ReductionPercent: 20
-  ReductionAmount: 0.05
+  ReductionAmount: 0.025
 --- !u!58 &1957238423
 CircleCollider2D:
   m_ObjectHideFlags: 0
