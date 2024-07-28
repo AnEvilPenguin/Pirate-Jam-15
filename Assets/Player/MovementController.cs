@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Assets;
+using Assets.Potions;
 
 namespace Assets.Player
 {
@@ -117,6 +118,7 @@ namespace Assets.Player
                 {
                     playerIsInteracting = false;
                     player.playerState = PlayerState.Idle;
+                    player.cauldren.isCooking = false;
                     return;
                 }
             }

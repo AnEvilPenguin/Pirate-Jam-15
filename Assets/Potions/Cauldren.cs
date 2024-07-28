@@ -47,7 +47,6 @@ namespace Assets.Potions
                 yield return new WaitForSeconds(0.2f);
             }
             animationCoroutineRunning = false;
-            isCooking = false;
             yield break;
         }
     }
