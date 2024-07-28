@@ -58,7 +58,7 @@ namespace Assets.Player
         public void KillPlayer()
         {
             // FIXME some sort of death animation?
-            Debug.Log("Blap");
+            GameMaster.Instance.LoadEndScene();
         }
     }
 }

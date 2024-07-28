@@ -1,3 +1,4 @@
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,4 +30,10 @@ public class GameMaster
 
         SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
+
+    public void LoadEndScene() =>
+        SceneManager.LoadScene("End", LoadSceneMode.Single);
+
+    public void LoadMainMenuScene() =>
+        SceneManager.LoadScene("Start", LoadSceneMode.Single);
 }
