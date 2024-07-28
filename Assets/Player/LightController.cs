@@ -8,21 +8,37 @@ public class LightController : MonoBehaviour
     public CircleCollider2D Collider;
     public RectTransform Mask;
     public int ReductionPercent = 20;
+    public float ReductionAmount = 0.5f;
 
-    private float _reductionAmount;
+    private float _maskReduction;
+    private float _colliderReduction;
+    private float _maskTarget;
 
     void Start()
     {
-        _reductionAmount = Mask.sizeDelta.x * (ReductionPercent / 100f);
-        
+        _maskReduction = Mask.localScale.x * (ReductionPercent / 100f);
+        _colliderReduction = Collider.radius * (ReductionPercent / 100f);
+        _maskTarget = Mask.localScale.x;
+
         ProgressBar.TimerElapsed += OnTimerElapsed;
+    }
+
+    private void Update()
+    {
+        var scaleX = Mask.localScale.x;
+
+        if (scaleX > _maskTarget)
+        {
+            var current = scaleX - ReductionAmount;
+            Mask.localScale = new Vector2(current, current);
+        }
+
     }
 
     private void OnTimerElapsed(System.Object sender, System.EventArgs e)
     {
-        var current = Mask.sizeDelta.x - _reductionAmount;
-        Mask.sizeDelta = new Vector2(current, current);
+        _maskTarget = Mask.localScale.x - _maskReduction;
 
-        Collider.radius -= _reductionAmount / 2;
+        Collider.radius -= _colliderReduction;
     }
 }
