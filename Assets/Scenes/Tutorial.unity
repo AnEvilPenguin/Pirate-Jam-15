@@ -2699,10 +2699,10 @@ MonoBehaviour:
   - {fileID: -1983528545, guid: 508193409b8a32544950adf133bac5d8, type: 3}
   - {fileID: 217223995, guid: 508193409b8a32544950adf133bac5d8, type: 3}
   walkingSpritesEast:
-  - {fileID: 1267130316, guid: 7d25cf7045530bb4f96f0da0d2b7b21e, type: 3}
-  - {fileID: 353265445, guid: 7d25cf7045530bb4f96f0da0d2b7b21e, type: 3}
-  - {fileID: 1822869638, guid: 7d25cf7045530bb4f96f0da0d2b7b21e, type: 3}
-  - {fileID: -1321800824, guid: 7d25cf7045530bb4f96f0da0d2b7b21e, type: 3}
+  - {fileID: -633157527, guid: b9f81a2e704ba5c4e990918e6bdcbc53, type: 3}
+  - {fileID: 1916094179, guid: b9f81a2e704ba5c4e990918e6bdcbc53, type: 3}
+  - {fileID: 290655786, guid: b9f81a2e704ba5c4e990918e6bdcbc53, type: 3}
+  - {fileID: 1688871072, guid: b9f81a2e704ba5c4e990918e6bdcbc53, type: 3}
 --- !u!212 &1883700456
 SpriteRenderer:
   m_ObjectHideFlags: 0
