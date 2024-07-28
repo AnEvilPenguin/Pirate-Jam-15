@@ -8,7 +8,7 @@ public class LightController : MonoBehaviour
     public CircleCollider2D Collider;
     public RectTransform Mask;
     public int ReductionPercent = 20;
-    public float ReductionAmount = 0.5f;
+    public float ReductionAmount = 0.25f;
 
     private float _maskReduction;
     private float _colliderReduction;

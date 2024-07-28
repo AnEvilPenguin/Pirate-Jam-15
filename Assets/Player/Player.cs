@@ -54,5 +54,11 @@ namespace Assets.Player
             }
             return false;
         }
+
+        public void KillPlayer()
+        {
+            // FIXME some sort of death animation?
+            Debug.Log("Blap");
+        }
     }
 }
