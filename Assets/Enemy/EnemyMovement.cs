@@ -36,8 +36,7 @@ public class EnemyMovement : MonoBehaviour
     private void ProcessMovement()
     {
         var direction = (Vector2)transform.position - _lastPosition;
-
-        var abs = direction.Abs();
+        var abs = new Vector2(Mathf.Abs(direction.x), Mathf.Abs(direction.y));
 
         var magnitude = abs.x + abs.y;
 
