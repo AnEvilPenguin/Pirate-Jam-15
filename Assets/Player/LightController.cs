@@ -48,6 +48,7 @@ public class LightController : MonoBehaviour
     public void IncreaseLightTimes(int times)
     {
         _maskTarget = Mask.localScale.x + (_maskReduction * times);
+        ProgressBar.ResetTimer();
     }
 
     private void OnTimerElapsed(System.Object sender, System.EventArgs e)

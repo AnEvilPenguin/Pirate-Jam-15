@@ -35,7 +35,7 @@ public class MinuteCounter : MonoBehaviour
         UpdateProgressBar();
     }
 
-    private void ResetTimer() =>
+    public void ResetTimer() =>
         _timer = Invert ? 0 : MaxTimer;
 
     private void UpdateProgressBar()
