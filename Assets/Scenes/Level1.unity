@@ -347,6 +347,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -8496061925450294910, guid: 6943703987263b640bba458040b9fe24, type: 3}
+    - target: {fileID: 405079011588450172, guid: 84af7cb81ced18e44965ca46cf8fa47e, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 405079011588450172, guid: 84af7cb81ced18e44965ca46cf8fa47e, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1545756157942402195, guid: 84af7cb81ced18e44965ca46cf8fa47e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -426,6 +434,10 @@ PrefabInstance:
     - target: {fileID: 1545756157942402195, guid: 84af7cb81ced18e44965ca46cf8fa47e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343229862054948538, guid: 84af7cb81ced18e44965ca46cf8fa47e, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3190079467311235512, guid: 84af7cb81ced18e44965ca46cf8fa47e, type: 3}
       propertyPath: m_LocalScale.y
@@ -59780,7 +59792,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 3
   m_SortAtRoot: 0
 --- !u!114 &5902725214243271315
 MonoBehaviour:
