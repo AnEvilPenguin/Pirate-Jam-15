@@ -53950,7 +53950,7 @@ MonoBehaviour:
   Collider: {fileID: 2588133975308081651}
   Mask: {fileID: 3866970967493933376}
   ReductionPercent: 20
-  ReductionAmount: 0.025
+  ReductionAmount: 7
 --- !u!58 &1957238423
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -59050,7 +59050,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.07}
+  m_Offset: {x: 0, y: -0.08}
   m_Size: {x: 0.09, y: 0.0001}
   m_Direction: 0
 --- !u!224 &3168909614628256695

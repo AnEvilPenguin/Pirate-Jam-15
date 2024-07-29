@@ -28,7 +28,7 @@ public class LightController : MonoBehaviour
 
         if (scaleX > _maskTarget)
         {
-            var current = scaleX - ReductionAmount;
+            var current = scaleX - ReductionAmount * Time.deltaTime;
             var scale = new Vector2(current, current);
 
             Mask.localScale = scale;
@@ -36,7 +36,7 @@ public class LightController : MonoBehaviour
         }
         else if (scaleX < _maskTarget)
         {
-            var current = scaleX + ReductionAmount;
+            var current = scaleX + ReductionAmount * Time.deltaTime;
             var scale = new Vector2(current, current);
 
             Mask.localScale = scale;
