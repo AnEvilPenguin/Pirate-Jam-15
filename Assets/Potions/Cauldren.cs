@@ -10,6 +10,7 @@ namespace Assets.Potions
         public SpriteRenderer spriteRenderer;
         public List<Sprite> idleSprites = new List<Sprite>();
         public List<Sprite> cookingSprites = new List<Sprite>();
+        public AudioClip Bubble;
 
         List<Sprite> selectedSprites = new List<Sprite>();
 

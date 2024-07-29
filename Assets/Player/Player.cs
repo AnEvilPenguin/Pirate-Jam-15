@@ -57,6 +57,7 @@ namespace Assets.Player
         {
             if (gatheredPotions.Count == gameLogic.potionsRequiredForCurrentBrew.Count)
             {
+                SoundEffectsManager.instance.PlaySoundEffect(cauldren.Bubble, cauldren.gameObject.transform, 1f);
                 cauldren.isCooking = true;
                 gatheredPotions = new List<Potion>();
                 gameLogic.SetNextBrewLevel();
