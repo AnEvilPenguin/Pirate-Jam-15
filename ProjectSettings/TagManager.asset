@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Light
+    uniqueID: 2884353031
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
