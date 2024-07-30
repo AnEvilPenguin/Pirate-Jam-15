@@ -70,8 +70,7 @@ namespace Assets.Player
         public void KillPlayer()
         {
             GameMaster.Instance.PlayerDied = true;
-            // FIXME some sort of death animation?
-            GameMaster.Instance.LoadEndScene();
+            playerState = PlayerState.Dead;
         }
     }
 }

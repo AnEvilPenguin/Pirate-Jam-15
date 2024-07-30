@@ -1,6 +1,6 @@
 using Assets;
-using System;
-using System.Collections;
+using Assets.Enemy;
+using Assets.Player;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +8,7 @@ public class EnemyAnimations : MonoBehaviour
 {
     public SpriteRenderer SpriteRenderer;
     public EnemyMovement Movement;
+    public Enemy Enemy;
 
     #region Sprites
     public List<Sprite> idleSpritesSouth = new List<Sprite>();
@@ -27,15 +28,20 @@ public class EnemyAnimations : MonoBehaviour
     public List<Sprite> walkingSpritesNorthEast = new List<Sprite>();
     public List<Sprite> walkingSpritesEast = new List<Sprite>();
     public List<Sprite> walkingSpritesSouthEast = new List<Sprite>();
+
+    public List<Sprite> killSprites = new List<Sprite>();
     #endregion
     List<Sprite> selectedSprites = new List<Sprite>();
 
     private int frameRate = 12;
+    private bool animationComplete = false;
 
     // Update is called once per frame
     void Update()
     {
-        if (Movement.IsMoving)
+        if (Enemy.Target.playerState == PlayerState.Dead)
+            PlayKillAnimation();
+        else if (Movement.IsMoving)
             PlayMovementAnimation();
         else
             PlayIdleAnimation();
@@ -74,6 +80,12 @@ public class EnemyAnimations : MonoBehaviour
             _ => idleSpritesSouth
         };
 
+        PlayAnimation();
+    }
+
+    private void PlayKillAnimation()
+    {
+        selectedSprites = killSprites;
         PlayAnimation();
     }
 
