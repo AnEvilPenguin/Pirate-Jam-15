@@ -19,7 +19,7 @@ namespace Assets.Enemy
         [SerializeField]
         private List<AudioClip> Ambient;
 
-        private float _cooldown;
+        private float _cooldown = 4f;
         private float _killDelay;
 
         private void Update()
@@ -53,7 +53,7 @@ namespace Assets.Enemy
             => PlaySFX(Growls, 1f);
 
         private void Ambiance()
-            => PlaySFX(Ambient, 0.9f);
+            => PlaySFX(Ambient, 0.2f);
 
         private void PlaySFX(List<AudioClip> clips, float volume)
         {
