@@ -86,7 +86,7 @@ namespace Assets
         }
 
         public void IncreaseLightLevel() =>
-            lightController.IncreaseLightTimes(2);
+            lightController.IncreaseLightTimes(1.5f);
 
         private List<PotionType> GetPotionsRequiredForBrew(int amountRequired)
         {

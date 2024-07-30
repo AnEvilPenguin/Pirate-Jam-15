@@ -9,6 +9,7 @@ public class LightController : MonoBehaviour
     public RectTransform Mask;
     public int ReductionPercent = 20;
     public float ReductionAmount = 0.25f;
+    public bool resetCounter = false;
 
     private float _maskReduction;
     private float _colliderReduction;
@@ -45,10 +46,11 @@ public class LightController : MonoBehaviour
 
     }
 
-    public void IncreaseLightTimes(int times)
+    public void IncreaseLightTimes(float times)
     {
         _maskTarget = Mask.localScale.x + (_maskReduction * times);
-        ProgressBar.ResetTimer();
+        if (resetCounter)
+            ProgressBar.ResetTimer();
     }
 
     private void OnTimerElapsed(System.Object sender, System.EventArgs e)
