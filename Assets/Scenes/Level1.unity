@@ -995,6 +995,30 @@ PrefabInstance:
       propertyPath: KillDistance
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5520579313822534993, guid: 812fdc14d33235c49a3e36d3ada525c1, type: 3}
+      propertyPath: Growls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5520579313822534993, guid: 812fdc14d33235c49a3e36d3ada525c1, type: 3}
+      propertyPath: Ambient.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5520579313822534993, guid: 812fdc14d33235c49a3e36d3ada525c1, type: 3}
+      propertyPath: Growls.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 58a94f4bc4dddef4facf859936c599e4, type: 3}
+    - target: {fileID: 5520579313822534993, guid: 812fdc14d33235c49a3e36d3ada525c1, type: 3}
+      propertyPath: Ambient.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 83d6f6f817d59104ca75da44bec64811, type: 3}
+    - target: {fileID: 5520579313822534993, guid: 812fdc14d33235c49a3e36d3ada525c1, type: 3}
+      propertyPath: Ambient.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: da247fcb8fcd25f489ce92c0636b0ad0, type: 3}
+    - target: {fileID: 5520579313822534993, guid: 812fdc14d33235c49a3e36d3ada525c1, type: 3}
+      propertyPath: Ambient.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 148be4b635a4fa5488d76920e5ee0c5f, type: 3}
     - target: {fileID: 5530152292142295414, guid: 812fdc14d33235c49a3e36d3ada525c1, type: 3}
       propertyPath: maxSpeed
       value: 0.4

@@ -6,7 +6,7 @@ namespace Assets.Enemy
 {
     public class Enemy : MonoBehaviour
     {
-        public float GrowlBackOff = 5f;
+        public float BackOff = 5f;
         public float KillDistance = 0.5f;
         public Rigidbody2D Rigidbody;
         public bool Silent = false;
@@ -16,8 +16,10 @@ namespace Assets.Enemy
         private List<AudioClip> Growls;
         [SerializeField]
         private AudioClip Attack;
+        [SerializeField]
+        private List<AudioClip> Ambient;
 
-        private float _growlCooldown;
+        private float _cooldown;
         private float _killDelay;
 
         private void Update()
@@ -33,28 +35,34 @@ namespace Assets.Enemy
 
             var direction = GetDirection(targetPosition, position);
 
-            if (direction.magnitude < 5f && !Silent)
-                Growl();
-            // TODO consider different effects when in really close.
-
             if (direction.magnitude < KillDistance && Target.playerState != Player.PlayerState.Dead)
             {
                 Target.KillPlayer();
                 _killDelay = SoundEffectsManager.instance.PlaySoundEffect(Attack, transform, 1f);
             }
+            else if (direction.magnitude < 5f && !Silent)
+                Growl();
+            else
+                Ambiance();
         }
 
         private Vector3 GetDirection(Vector3 targetPosition, Vector3 position) =>
             targetPosition - position;
 
         private void Growl()
+            => PlaySFX(Growls, 1f);
+
+        private void Ambiance()
+            => PlaySFX(Ambient, 0.9f);
+
+        private void PlaySFX(List<AudioClip> clips, float volume)
         {
-            if (_growlCooldown == 0)
-                _growlCooldown = SoundEffectsManager.instance.PlayRandomSoundEffect(Growls, transform, 1f) + GrowlBackOff;
-            else if (_growlCooldown > 0)
-                _growlCooldown -= Time.deltaTime;
-            else if (_growlCooldown < 0)
-                _growlCooldown = 0;
+            if (_cooldown == 0)
+                _cooldown = SoundEffectsManager.instance.PlayRandomSoundEffect(clips, transform, volume) + BackOff;
+            else if (_cooldown > 0)
+                _cooldown -= Time.deltaTime;
+            else if (_cooldown < 0)
+                _cooldown = 0;
         }
 
         private void KillPlayer()
