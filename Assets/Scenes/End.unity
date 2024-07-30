@@ -329,8 +329,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteRenderer: {fileID: 3626916396261797072}
-  PlayerDied: {fileID: -7333243439070461598, guid: 736c9680cae6e884991273b79fec0c9f, type: 3}
-  PlayerAlive: {fileID: -5539135617484368723, guid: 951da67f466a4194482b864bbaf1c353, type: 3}
+  PlayerDied: {fileID: 21300000, guid: db60fb959bd52f241a43f95206337b0d, type: 3}
+  PlayerAlive: {fileID: 21300000, guid: a9d93de1a6f3cfc4095427be27d78cc1, type: 3}
 --- !u!1 &1052532108
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,7 +741,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7333243439070461598, guid: 736c9680cae6e884991273b79fec0c9f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: db60fb959bd52f241a43f95206337b0d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -778,8 +778,8 @@ Transform:
   m_GameObject: {fileID: 6969460405780720476}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 47, y: -37, z: 10}
-  m_LocalScale: {x: 500, y: 500, z: 1}
+  m_LocalPosition: {x: 27, y: 179, z: 10}
+  m_LocalScale: {x: 200, y: 200, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 602853796}
