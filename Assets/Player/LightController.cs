@@ -44,6 +44,15 @@ public class LightController : MonoBehaviour
             Collider.localScale = scale;
         }
 
+        if (scaleX < 0)
+        {
+            var scale = new Vector2(0, 0);
+
+            Mask.localScale = scale;
+            Collider.localScale = scale;
+        }
+
+
     }
 
     public void IncreaseLightTimes(float times)
@@ -56,5 +65,8 @@ public class LightController : MonoBehaviour
     private void OnTimerElapsed(System.Object sender, System.EventArgs e)
     {
         _maskTarget = Mask.localScale.x - _maskReduction;
+
+        if (_maskTarget < 0)
+            _maskTarget = 0;
     }
 }

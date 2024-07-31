@@ -20,5 +20,10 @@ public class EnemySpeed : MonoBehaviour
 
         SpeedIncrease += SpeedIncrease / SpeedIncreaseDivisor;
     }
-        
+    
+    public void DecreaseSpeed()
+    {
+        Pathing.maxSpeed -= SpeedIncrease / SpeedIncreaseDivisor;
+    }
+
 }

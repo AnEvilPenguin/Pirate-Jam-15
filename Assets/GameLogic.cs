@@ -13,6 +13,7 @@ namespace Assets
         public List<GameObject> potionPrefabs = new List<GameObject>();
         public List<GameObject> spawnPoints = new List<GameObject>();
         public LightController lightController;
+        public EnemySpeed enemySpeed;
 
         List<AvailablePotionPot> availablePotionPots = new List<AvailablePotionPot>();
         List<AvailableSpawnPoint> avilableSpawnPoints = new List<AvailableSpawnPoint>();
@@ -87,6 +88,9 @@ namespace Assets
 
         public void IncreaseLightLevel() =>
             lightController.IncreaseLightTimes(1.5f);
+
+        public void DecreaseSpeed() =>
+                enemySpeed.DecreaseSpeed();
 
         private List<PotionType> GetPotionsRequiredForBrew(int amountRequired)
         {

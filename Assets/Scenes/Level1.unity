@@ -550,6 +550,10 @@ PrefabInstance:
       value: EventSystem
       objectReference: {fileID: 0}
     - target: {fileID: 2103659427824760249, guid: d1aede576990f6743afcf2b97c78cfeb, type: 3}
+      propertyPath: enemySpeed
+      value: 
+      objectReference: {fileID: 1314172339}
+    - target: {fileID: 2103659427824760249, guid: d1aede576990f6743afcf2b97c78cfeb, type: 3}
       propertyPath: userInterface
       value: 
       objectReference: {fileID: 5374693355818325916}
@@ -1049,6 +1053,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cf76b2e654601845a8fd06283b5ad5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1314172339 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4898074379427385761, guid: 812fdc14d33235c49a3e36d3ada525c1, type: 3}
+  m_PrefabInstance: {fileID: 1242094978}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a11f0706de6149244ae31d5103bf1290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1335539492 stripped
@@ -53537,7 +53552,7 @@ MonoBehaviour:
   Mask: {fileID: 3866970967493933376}
   ReductionPercent: 33
   ReductionAmount: 6
-  resetCounter: 0
+  resetCounter: 1
 --- !u!58 &1957238423
 CircleCollider2D:
   m_ObjectHideFlags: 0
